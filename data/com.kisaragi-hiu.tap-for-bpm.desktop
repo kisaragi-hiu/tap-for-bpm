@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Tap for BPM
+GenericName=Tap for BPM
+Comment=Tap the big button to figure out a BPM value
+Categories=Education;
+Exec=com.kisaragi-hiu.tap-for-bpm
+Icon=application-default-icon
+Terminal=False
+Type=Application
+X-GNOME-Gettext-Domain=kisaragi-tap-for-bpm
+Keywords=Hello;World;
