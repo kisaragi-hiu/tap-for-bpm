@@ -2,7 +2,7 @@ project('com.kisaragi-hiu.tap-for-bpm', 'vala', 'c')
 
 executable(
     meson.project_name(),
-    'src/Application.vala',
+    'src/tap-for-bpm.vala',
     dependencies: [
         dependency('gtk+-3.0')
     ],
