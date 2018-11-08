@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.kisaragi-hiu.tap-for-bpm\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-09 07:54+0900\n"
+"POT-Creation-Date: 2018-11-09 08:16+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/tap-for-bpm.vala:10 data/com.kisaragi-hiu.tap-for-bpm.desktop.in:3
+#: src/tap-for-bpm.vala:15
+msgid "Click"
+msgstr ""
+
+#: src/tap-for-bpm.vala:16 data/com.kisaragi-hiu.tap-for-bpm.desktop.in:3
 #: data/com.kisaragi-hiu.tap-for-bpm.desktop.in:4
 #: data/com.kisaragi-hiu.tap-for-bpm.appdata.xml.in:6
 msgid "Tap for BPM"
+msgstr ""
+
+#: src/tap-for-bpm.vala:17
+msgid "Average BPM:"
+msgstr ""
+
+#: src/tap-for-bpm.vala:18
+msgid "Closest Integer:"
 msgstr ""
 
 #: data/com.kisaragi-hiu.tap-for-bpm.desktop.in:5
