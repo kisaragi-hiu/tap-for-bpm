@@ -1,5 +1,7 @@
 project('com.kisaragi-hiu.tap-for-bpm', 'vala', 'c')
+i18n = import('i18n')
 
+add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language: 'c')
 executable(
     meson.project_name(),
     'src/tap-for-bpm.vala',
@@ -9,7 +11,23 @@ executable(
     install: true
 )
 
-install_data(
-    join_paths('data', meson.project_name() + '.desktop'),
+
+# Translate and install .desktop and .appdata files
+i18n.merge_file(
+    input: join_paths('data', meson.project_name() + '.desktop.in'),
+    output: meson.project_name() + '.desktop',
+    po_dir: join_paths(meson.source_root(), 'po'),
+    type: 'desktop',
+    install: true,
+    install_dir: join_paths(get_option('datadir'), 'applications')
+)
+
+i18n.merge_file(
+    input: join_paths('data', meson.project_name() + '.appdata.xml.in'),
+    output: meson.project_name() + '.appdata.xml',
+    po_dir: join_paths(meson.source_root(), 'po'),
+    install: true,
     install_dir: join_paths(get_option('datadir'), 'metainfo')
 )
+
+subdir('po')

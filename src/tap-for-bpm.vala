@@ -7,6 +7,8 @@ public class TapForBPM : Gtk.Application {
     }
     protected override void activate () {
         var main_window = new Gtk.ApplicationWindow(this);
+		var label = new Gtk.Label (_("Tap for BPM"));
+		main_window.add (label);
         main_window.show_all ();
     }
     public static int main (string[] args) {
