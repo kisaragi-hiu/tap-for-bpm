@@ -7,10 +7,10 @@ public class TapForBPM : Gtk.Application {
     }
     protected override void activate () {
         var main_window = new Gtk.ApplicationWindow(this);
-        main_window.show_all();
+        main_window.show_all ();
     }
     public static int main (string[] args) {
-        var app = new TapForBPM;
-        return app.run(args);
+        var app = new TapForBPM ();
+        return app.run (args);
     }
 }
