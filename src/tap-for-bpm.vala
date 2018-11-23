@@ -6,16 +6,48 @@ public class TapForBPM : Gtk.Application {
             );
     }
 
+    public int count = 0;
+    public int64 tap_first;
+    public int64 tap_current;
+    public int reset_threshold = 5 * 1000 * 1000; // 5s represented as μs
+
+    double on_bpm_clicked () {
+        // should I return values or the final string?
+
+        double average;
+        // reset if left for too long
+        if ((tap_current - tap_first) > reset_threshold) {
+            count = 0;
+            tap_current = tap_first = 0;
+            return 0;
+        }
+
+        if (count == 0) {
+            tap_first = get_monotonic_time ();
+            count += 1;
+            return 0;
+        } else {
+            tap_current = get_monotonic_time ();
+            count += 1;
+            average = 60000000 * count / (tap_current - tap_first);
+            return average;
+        }
+    }
+
     protected override void activate () {
         var average_label = new Gtk.Label (_("Average BPM:"));
-        var integer_label = new Gtk.Label (_("Closest Integer:"));
+        var average_tracker = new Gtk.Label ("");
         var count_label = new Gtk.Label (_("Taps:"));
-        var count = 0;
+        var count_tracker = new Gtk.Label ("");
+        var integer_label = new Gtk.Label (_("Closest Integer:"));
+        var integer_tracker = new Gtk.Label ("");
 
         var button = new Gtk.Button.with_label (_("Click"));
         button.clicked.connect (() => {
-                count += 1;
-                button.label = _(count.to_string ());
+                double average = on_bpm_clicked ();
+                integer_tracker.label = average.to_string (); // TODO
+                average_tracker.label = average.to_string ();
+                count_tracker.label = count.to_string ();
             });
 
         var header = new Gtk.HeaderBar ();
