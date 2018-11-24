@@ -63,6 +63,9 @@ public class TapForBPM : Gtk.Application {
         layout.attach (button, 0, 0, 1, 1);
         layout.attach (average_label, 0, 1, 1, 1);
         layout.attach (integer_label, 0, 2, 1, 1);
+        layout.attach (integer_tracker, 1, 0, 1, 1);
+        layout.attach (average_tracker, 1, 1, 1, 1);
+        layout.attach (count_tracker, 1, 2, 1, 1);
         // layout.attach (closest_integer, 1, 0, 2, 1);
 
         var window = new Gtk.ApplicationWindow (this);
