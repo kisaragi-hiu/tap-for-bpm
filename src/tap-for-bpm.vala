@@ -6,7 +6,7 @@ public class TapForBPM : Gtk.Application {
             );
     }
 
-    public int count = 0;
+    public int64 count = 0;
     public int64 tap_first;
     public int64 tap_current;
     public int64 tap_previous;
