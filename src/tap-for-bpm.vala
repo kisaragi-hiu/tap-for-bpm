@@ -19,7 +19,6 @@ public class TapForBPM : Gtk.Application {
         if ((tap_current - tap_first) > reset_threshold) {
             count = 0;
             tap_current = tap_first = 0;
-            return 0;
         }
 
         if (count == 0) {
