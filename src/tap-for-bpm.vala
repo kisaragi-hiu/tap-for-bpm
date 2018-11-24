@@ -9,6 +9,7 @@ public class TapForBPM : Gtk.Application {
     public int count = 0;
     public int64 tap_first;
     public int64 tap_current;
+    public int64 tap_previous;
     public int reset_threshold = 5 * 1000 * 1000; // 5s represented as μs
 
     double on_bpm_clicked () {
@@ -16,9 +17,8 @@ public class TapForBPM : Gtk.Application {
 
         double average;
         // reset if left for too long
-        if ((tap_current - tap_first) > reset_threshold) {
-            count = 0;
-            tap_current = tap_first = 0;
+        if (tap_previous != 0 && (tap_current - tap_previous) > reset_threshold) {
+            tap_current = tap_first = tap_previous = count = 0;
         }
 
         if (count == 0) {
@@ -26,6 +26,7 @@ public class TapForBPM : Gtk.Application {
             count += 1;
             return 0;
         } else {
+            tap_previous = tap_current;
             tap_current = get_monotonic_time ();
             count += 1;
             average = 60000000 * count / (tap_current - tap_first);
